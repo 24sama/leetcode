@@ -13,3 +13,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+.idea/
+# java项目的文件
+leetcode-java/out/
+leetcode-java/.idea/
+leetcode-java/*.iml
+# golang项目的文件
+leetcode-golang/.idea/

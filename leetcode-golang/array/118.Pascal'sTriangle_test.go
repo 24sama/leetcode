@@ -27,8 +27,12 @@ import (
 func Test_PascalTriangle(t *testing.T) {
 	fmt.Println(generate(5))
 	fmt.Println(generate(2))
+
+	fmt.Println(generate2(5))
+	fmt.Println(generate2(2))
 }
 
+// 利用队列
 func generate(numRows int) [][]int {
 	depth := make([][]int, 0)
 
@@ -58,4 +62,18 @@ func generate(numRows int) [][]int {
 		depth = append(depth, layer)
 	}
 	return depth
+}
+
+// 利用数组元素计算
+func generate2(numRows int) [][]int {
+	res := make([][]int, numRows)
+	for i := range res {
+		res[i] = make([]int, i+1)
+		res[i][0] = 1
+		res[i][i] = 1
+		for j := 1; j < i; j++ {
+			res[i][j] = res[i-1][j] + res[i-1][j-1]
+		}
+	}
+	return res
 }

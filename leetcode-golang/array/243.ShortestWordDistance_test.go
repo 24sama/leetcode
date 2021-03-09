@@ -52,19 +52,19 @@ func shortestWordDistance(words []string, word1 string, word2 string) int {
 	}
 
 	// 遍历两个数组，取距离最小的结果
-	res := math.MaxInt32
+	res := math.MaxFloat32
 	for _, v := range idx1 {
 		for _, j := range idx2 {
-			res = int(math.Abs(float64(v - j)))
+			res = math.Min(res, math.Abs(float64(v-j)))
 		}
 	}
-	return res
+	return int(res)
 }
 
 // 一次遍历
 func shortestWordDistance2(words []string, word1 string, word2 string) int {
 	idx1, idx2 := -1, -1
-	res := math.MaxInt32
+	res := math.MaxFloat32
 	for i, v := range words {
 		if v == word1 {
 			idx1 = i
@@ -72,23 +72,23 @@ func shortestWordDistance2(words []string, word1 string, word2 string) int {
 			idx2 = i
 		}
 		if idx1 != -1 && idx2 != -1 {
-			res = int(math.Abs(float64(idx1 - idx2)))
+			res = math.Min(res, math.Abs(float64(idx1-idx2)))
 		}
 	}
-	return res
+	return int(res)
 }
 
 // 一次遍历+一个变量存储
 func shortestWordDistance3(words []string, word1 string, word2 string) int {
 	idx := -1
-	res := math.MaxInt32
+	res := math.MaxFloat32
 	for i, v := range words {
 		if word1 == v || word2 == v {
 			if idx != -1 && words[idx] != v {
-				res = int(math.Abs(float64(idx - i)))
+				res = math.Min(res, math.Abs(float64(idx-i)))
 			}
 			idx = i
 		}
 	}
-	return res
+	return int(res)
 }

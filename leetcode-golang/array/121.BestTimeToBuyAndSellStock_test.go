@@ -28,6 +28,7 @@ import (
 func Test_BestTimeToBuyAndSellStock(t *testing.T) {
 	fmt.Println(maxProfit([]int{7, 1, 5, 3, 6, 4}))
 	fmt.Println(maxProfit2([]int{7, 1, 5, 3, 6, 4}))
+	fmt.Println(maxProfit3([]int{7, 1, 5, 3, 6, 4}))
 }
 
 // 贪心
@@ -71,4 +72,18 @@ func maxProfit2(prices []int) int {
 	}
 	// 最终结果为最后一天且未持有股票的状态
 	return dp[len(prices)-1][0]
+}
+
+// 暴力
+func maxProfit3(prices []int) int {
+	max := 0
+	for i := 0; i < len(prices)-1; i++ {
+		for j := 1; j < len(prices); j++ {
+			profit := prices[j] - prices[i]
+			if profit > max {
+				max = profit
+			}
+		}
+	}
+	return max
 }

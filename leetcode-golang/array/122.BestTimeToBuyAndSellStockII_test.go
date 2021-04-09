@@ -3,7 +3,6 @@ package array
 import (
 	"fmt"
 	"math"
-	"strings"
 	"testing"
 )
 
@@ -36,17 +35,11 @@ import (
 func Test_BestTimeToBuyAndSellStockII(t *testing.T) {
 	fmt.Println(maxProfitII([]int{7, 1, 5, 3, 6, 4}))
 	fmt.Println(maxProfitII2([]int{7, 1, 5, 3, 6, 4}))
-
-	nodeList := strings.Split("node", ",")
-	fmt.Println(nodeList)
 }
 
 // dp
 func maxProfitII(prices []int) int {
-	dp := make([][]int, len(prices))
-	for i := range dp {
-		dp[i] = make([]int, 2)
-	}
+	dp := make([][2]int, len(prices))
 
 	dp[0][0] = 0
 	dp[0][1] = -prices[0]

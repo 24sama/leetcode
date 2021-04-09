@@ -50,10 +50,7 @@ func maxProfit2(prices []int) int {
 	// 定义状态dp[i][j] 表示第i天的利润
 	// i 表示天数
 	// j 表示当天是否持有 0表示未持有 1表示持有
-	dp := make([][]int, len(prices))
-	for i := range dp {
-		dp[i] = make([]int, 2)
-	}
+	dp := make([][2]int, len(prices))
 
 	// 1。第一天未买入股票状态，则利润为0
 	// 2。第一天买入股票的状态，则利润为负当天的股价
